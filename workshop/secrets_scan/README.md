@@ -62,6 +62,7 @@ There are other types of secrets or sensitive data that may not be covered by th
 ## Tools Used in This Module
 
 - **TruffleHog** - Git history secrets scanner
+- **Gitleaks** - Git history and filesystem secrets scanner
 
 ## Learning Objectives
 
