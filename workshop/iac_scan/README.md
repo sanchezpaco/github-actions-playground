@@ -48,9 +48,9 @@ In addition to scanning for infrastructure security issues, we must also ensure 
 
 ## Tools Used in This Module
 
-- **Checkov** - Static analysis for IaC
-- **Trivy** - Misconfiguration scanner for IaC
-  - It also supports scanning filesystems, containers or repos, but we will focus on IaC for this module.
+- [**Checkov**](https://github.com/bridgecrewio/checkov) - Static analysis tool for Infrastructure as Code security scanning
+- [**Trivy**](https://github.com/aquasecurity/trivy) - Misconfiguration scanner for Infrastructure as Code
+  - Also supports scanning filesystems, containers or repos, but we focus on IaC for this module
 
 
 ## Learning Objectives

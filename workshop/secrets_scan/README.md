@@ -61,8 +61,8 @@ There are other types of secrets or sensitive data that may not be covered by th
 
 ## Tools Used in This Module
 
-- **TruffleHog** - Git history secrets scanner
-- **Gitleaks** - Git history and filesystem secrets scanner
+- [**TruffleHog**](https://github.com/trufflesecurity/trufflehog) - Git history secrets scanner that finds credentials, API keys, and other secrets
+- [**Gitleaks**](https://github.com/gitleaks/gitleaks) - Git history and filesystem secrets scanner for detecting hardcoded secrets
 
 ## Learning Objectives
 

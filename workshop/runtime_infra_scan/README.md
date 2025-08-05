@@ -19,9 +19,10 @@ Continuous runtime scanning helps ensure your infrastructure remains secure afte
 
 ## Tools Used in This Module
 
-- **Prowler** – Perform security best practices assessments for multiple cloud providers (AWS, Azure, GCP, M365, GitHub and more).
-  - It can be used also for continuous monitoring and remediation, but we will focus on the assessment part.
-- **Steampipe** – SQL-based infrastructure analysis and compliance checking for cloud platforms.
+- [**Prowler**](https://github.com/prowler-cloud/prowler) - Security best practices assessments for multiple cloud providers (AWS, Azure, GCP, M365, GitHub and more)
+  - Can also be used for continuous monitoring and remediation, but we focus on the assessment part
+- [**Steampipe**](https://github.com/turbot/steampipe) - SQL-based infrastructure analysis and compliance checking for cloud platforms
+  - Uses SQL queries to analyze cloud resources and run security compliance checks across multiple providers
 
 ## Learning Objectives
 

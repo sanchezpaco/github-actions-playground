@@ -32,7 +32,7 @@ Malicious actors can exploit vulnerabilities in your code to gain unauthorized a
 
 ## Tools Used in This Module
 
-- **[Dependency Check](https://github.com/dependency-check/DependencyCheck)** - OWASP Dependency Check
+- [**Dependency Check**](https://github.com/dependency-check/DependencyCheck) - OWASP tool for Software Composition Analysis (SCA) to identify known vulnerabilities in dependencies
 
 ## Learning Objectives
 

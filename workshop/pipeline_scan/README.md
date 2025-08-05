@@ -18,9 +18,9 @@ Pipeline security scanning analyzes your CI/CD workflows, configurations, and au
 
 ## Tools Used in This Module
 
-- [**claws**](https://github.com/Betterment/claws) - Claws is a static analysis tool to help you write safer GitHub Workflows.
-- [**zizmor**](https://github.com/woodruffw/zizmor) - Zizmor is a tool for finding security issues in GitHub Actions workflows.
-
+- [**Claws**](https://github.com/Betterment/claws) - Static analysis tool to help write safer GitHub Actions workflows
+- [**Zizmor**](https://github.com/woodruffw/zizmor) - Security scanner for finding issues in GitHub Actions workflows
+- [**Prowler**](https://github.com/prowler-cloud/prowler) - Security scanner for cloud infrastructure
 
 ## Learning Objectives
 
