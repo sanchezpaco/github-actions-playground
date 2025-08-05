@@ -19,11 +19,6 @@ jobs:
   secrets-scan:
     needs: pipeline-scan
     uses: ./.github/workflows/secrets-scan.yml
-    permissions:
-      contents: read
-      id-token: write
-      issues: write
-      pull-requests: write
 
   iac-scan:
     needs: pipeline-scan
