@@ -29,14 +29,14 @@ jobs:
         id: scan-tool
         run: |
           # Install Gitleaks
-          wget -O gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz
-          tar -xzf gitleaks.tar.gz
-          sudo mv gitleaks /usr/local/bin/
+          wget -O /tmp/gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.28.0/gitleaks_8.28.0_linux_x64.tar.gz
+          tar -xzf /tmp/gitleaks.tar.gz -C /tmp/
+          sudo mv /tmp/gitleaks /usr/local/bin/
 
           # OPTION 1: Scan entire git history + current filesystem (recommended for production CI)
           # NOTE: This option may require cleaning git history if secrets are found in past commits
           # gitleaks detect --source . --verbose --exit-code 1
-          
+
           # OPTION 2: Scan only current filesystem without git history (WORKSHOP DEFAULT)
           # This option is used for the workshop as it focuses on current code without requiring git history cleanup
           gitleaks detect --source . --no-git --verbose --exit-code 1

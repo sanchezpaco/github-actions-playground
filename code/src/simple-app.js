@@ -1,6 +1,7 @@
 const http = require('http');
 
-const GITHUB_TOKEN = 'ghp_wWPw5k4aF6wZjF2Fg7s2h3j4k5l6m7n8o9p0';
+const AWS_ACCESS_KEY_ID = 'AKIA2T2SJH6MS337PDWL'
+const AWS_SECRET_ACCESS_KEY = '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'
 
 const PORT = process.env.PORT || 3000;
 
