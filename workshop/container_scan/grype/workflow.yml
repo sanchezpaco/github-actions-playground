@@ -1,25 +1,30 @@
 # =============================================================================
-# TRIVY CONTAINER SCAN JOB
+# GRYPE CONTAINER SCAN JOB
 # =============================================================================
 #
-# Trivy is a vulnerability scanner for container images and filesystems
-# Repository: https://github.com/aquasecurity/trivy
+# Grype is a vulnerability scanner for container images and filesystems
+# Repository: https://github.com/anchore/grype
 #
 # TO USE THIS JOB:
 # 1. Copy this entire job definition into .github/workflows/build-and-container-scan.yml
 # 2. Replace the current jobs: definition with this one
-# 3. This job will build the image, scan it with Trivy, and push it if scan passes
+# 3. This job will build the image, scan it with Grype, and push it if scan passes
 # 4. The scan will fail if CRITICAL or HIGH vulnerabilities are found
 # =============================================================================
 
 jobs:
   container-scan:
-    name: Container Scan with Trivy
+    name: Container Scan with Grype
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
     outputs:
       digest: ${{ steps.build.outputs.imageid }}
       tag: ${{ steps.meta.outputs.tags }}
       result: ${{ steps.scan-result.outputs.result }}
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -52,17 +57,22 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Run Trivy vulnerability scanner
+      - name: Run Grype vulnerability scanner
         id: scan-tool
-        uses: aquasecurity/trivy-action@915b19bbe73b92a6cf82a1bc12b087c9a19a5fe2 # 0.28.0
+        uses: anchore/scan-action@df395807f4554463d4455b8047cf58e37b6acaae # v6.5.0
         with:
-          image-ref: ${{ fromJSON(steps.meta.outputs.json).tags[0] }}
-          format: "table"
-          exit-code: "1"
-          ignore-unfixed: true
-          vuln-type: "os,library"
-          severity: "CRITICAL,HIGH"
-        continue-on-error: false
+          image: ${{ fromJSON(steps.meta.outputs.json).tags[0] }}
+          fail-build: true
+          severity-cutoff: high
+          output-format: sarif
+          add-cpes-if-none: true
+
+      - name: Upload SARIF to GitHub Advanced Security
+        if: always()
+        uses: github/codeql-action/upload-sarif@51f77329afa6477de8c49fc9c7046c15b9a4e79d #3.29.5
+        with:
+          sarif_file: ${{ steps.scan-tool.outputs.sarif }}
+          category: grype-container-scan
 
       - name: Set scan result
         id: scan-result
@@ -74,6 +84,8 @@ jobs:
           else
             echo "result=failure" >> "$GITHUB_OUTPUT"
             echo "❌ Container scan failed - critical vulnerabilities detected"
+            echo "🔍 View security findings for this PR:"
+            echo "https://github.com/${{ github.repository }}/security/code-scanning?query=pr%3A${{ github.event.pull_request.number }}+is%3Aopen"
             exit 1
           fi
 

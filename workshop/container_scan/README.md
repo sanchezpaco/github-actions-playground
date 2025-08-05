@@ -26,6 +26,8 @@ Container security scanning analyzes images and container configurations to iden
 
 - **Trivy** - Vulnerability, misconfiguration and secret scanner for containers.
   - It also supports scanning filesystems, IaC or repos, but we will focus on containers for this module.
+- **Grype** - Fast vulnerability scanner for container images and filesystems.
+  - Developed by Anchore, uses multiple vulnerability databases and generates SBOM automatically.
 
 ## Learning Objectives
 

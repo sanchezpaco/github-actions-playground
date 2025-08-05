@@ -31,6 +31,10 @@ jobs:
 
   build-and-container-scan:
     needs: [code-scan, secrets-scan]
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
     uses: ./.github/workflows/build-and-container-scan.yml
 
   deploy-infrastructure:
